@@ -10,7 +10,7 @@ CREATE TABLE userBoard
     userPhoneNumber VARCHAR2(60)NOT NULL,
     userEmail1 VARCHAR2(50)NOT NULL,
     userEmail2 VARCHAR2(50)NOT NULL,
-    userGender VARCHAR2(6)NOT NULL, --남,여로 성별입력 받음
+    userGender VARCHAR2(6)NOT NULL CHECK(USERGENDER IN('남','여')), --남,여로 성별입력 받음
     buyScore_AVG NUMBER(3)
 );
 
@@ -34,7 +34,7 @@ CREATE TABLE careerBoard
 CREATE TABLE detailBoard
 (
     orderNum NUMBER(10) PRIMARY KEY, --거래내역의 고유번호
-    sell_ID NUMBER(10)UNIQUE NOT NULL, --해당 bno에서 일어난 거래의 구매아이디
+    sell_ID VARCHAR2(10)UNIQUE NOT NULL, --해당 bno에서 일어난 거래의 구매아이디
     buy_ID VARCHAR2(20) UNIQUE NOT NULL, --해당 bno에서 일어난 거래의 판매아이디
     bno NUMBER(10) UNIQUE NOT NULL,
     price NUMBER(10) NOT NULL, --판매가
@@ -55,7 +55,7 @@ CREATE TABLE mainBoard
     bno NUMBER(10),
     user_ID VARCHAR2(20) UNIQUE NOT NULL,
     C_code NUMBER(5) UNIQUE NOT NULL,
-    boardType VARCHAR(6) NOT NULL, --게시글의 종류를 확인함 입력값은'구매','판매'
+    boardType VARCHAR(6) NOT NULL CHECK(boardType IN('구매','판매')), --게시글의 종류를 확인함 입력값은'구매','판매'
     title VARCHAR2(30) NOT NULL,
     text VARCHAR2(500) NOT NULL,
     price NUMBER(10) NOT NULL,

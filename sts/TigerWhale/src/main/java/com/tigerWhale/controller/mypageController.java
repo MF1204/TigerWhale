@@ -20,25 +20,9 @@ public class mypageController {
 		return "mypage/mypage";
 	}
 	
-	@RequestMapping("/mypage-email")
+	@RequestMapping("/mypageModify")
 	public String mypageEmail() {
-		return "mypage/mypage-email";
+		return "mypage/mypageModify";
 	}
-	
-	@RequestMapping("/mypage-name")
-	public String mypageName() {
-		return "mypage/mypage-name";
-	}
-	
-	@RequestMapping("/mypage-password")
-	public String mypagePassword() {
-		return "mypage/mypage-password";
-	}
-	
-	@RequestMapping("/mypage-phone")
-	public String mypagePhone() {
-		return "mypage/mypage-phone";
-	}
-	
 	
 }
