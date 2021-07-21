@@ -36,7 +36,7 @@ public class LoginController {
 	public String userMypage(HttpSession session, Model model) {
 		
 		UsersVO vo = (UsersVO) session.getAttribute("usersVO");
-		String user_ID = vo.getUser_ID();
+		String user_ID = vo.getUserId();
 		
 		UsersVO userInfo = usersService.getInfo(user_ID);
 		model.addAttribute("userInfo", userInfo);

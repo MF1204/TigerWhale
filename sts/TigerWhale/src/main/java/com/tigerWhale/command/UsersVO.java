@@ -9,14 +9,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor //기본생성자
 public class UsersVO {
 	
-    private String user_ID;
-    private String user_PW ;
-    private String userAdress;
-    private String userPhoneNumber;
-    
-    private String userEmail1 ;
-    private String userEmail2 ;
-    
-    private String userGender ;
-    private String buyScore_AVG;
+	private String userId;
+	private String userPw;
+	private String useradress;
+	private String userphonenumber;
+	private String useremail1;
+	private String useremail2;
+	private String usergender;
+	private String buyscoreAvg;
+	
 }
