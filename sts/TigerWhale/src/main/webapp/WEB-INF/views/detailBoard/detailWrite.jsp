@@ -104,9 +104,6 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.2/proj4.js"></script>
 <script>
-console.log(sessionStorage.getItem('UsersVO'));
-console.log(sessionStorage.getItem('usersVO'));
-console.log(session.getAttribute("usersVO"));
 	//폼검증
 	$("#okBtn")
 			.click(
