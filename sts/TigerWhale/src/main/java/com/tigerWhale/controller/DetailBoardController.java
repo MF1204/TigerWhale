@@ -60,13 +60,12 @@ public class DetailBoardController {
 
 
 		HttpSession session = request.getSession();
-		System.out.println(session.getAttribute("usersVO"));
 		
 		if(session.getAttribute("usersVO") != null)
 		{
 			model.addAttribute("usersVO", session.getAttribute("usersVO"));
 		}
-			
+		
 		model.addAttribute("categoryBoardVO", categoryBoardVO);
 		return "detailBoard/detailWrite";
 		
@@ -78,7 +77,6 @@ public class DetailBoardController {
 	public ArrayList<CategoryBoardVO> detailWriteUpdate(@RequestBody CategoryBoardVO vo) {
 		
 		ArrayList<CategoryBoardVO> updateCategoryBoardVO  = detailBoardService.getMiddleCataGory(vo);
-		System.out.println("바뀐값  " + updateCategoryBoardVO);
 		return detailBoardService.getMiddleCataGory(vo);
 	}
 	
@@ -97,7 +95,6 @@ public class DetailBoardController {
 		ArrayList<CategoryBoardVO> categoryBoardVO = detailBoardService.getCataGoryALL();
 
 		HttpSession session = request.getSession();
-		System.out.println(session.getAttribute("usersVO"));
 		
 		if(session.getAttribute("usersVO") != null)
 		{
@@ -117,8 +114,7 @@ public class DetailBoardController {
 	
 	
 	@RequestMapping("/detailPage")
-	public String detailPage(HttpServletRequest request, Model model) {
-		int bno = 88;
+	public String detailPage(@RequestParam(value="bno") int bno, HttpServletRequest request, Model model) {
 		System.out.println(bno);
 		//===============================================
 		
@@ -129,63 +125,28 @@ public class DetailBoardController {
 		model.addAttribute("userVO", userVO);
 		//===============================================
 		ArrayList<DetailBoardVO> detaiBoardVO = detailBoardService.getBoardDetail(bno);
-		System.out.println("detiBoardVO  " + detaiBoardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
 		MainBoardVO mainBoardVO = detailBoardService.getMainDetail(bno);
-		System.out.println("mainBoardVO  " + mainBoardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
-		
 		System.out.println(mainBoardVO.getC_code());
 		CategoryBoardVO categoryBoardVO = detailBoardService.getCategory(mainBoardVO.getC_code());
-		System.out.println("categoryBoardVO  " + categoryBoardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
 		ArrayList<ReplyBoardVO> repyBoardVO = detailBoardService.getReplyBoard(bno);
-		System.out.println("repyBoardVO  " + repyBoardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
-		
 		String user_ID = mainBoardVO.getUser_ID();
-		System.out.println( "mainBoardVO" + mainBoardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
 		UsersVO usersVO = detailBoardService.getUserDetail(user_ID);
-		System.out.println("usersVO  " + usersVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
-		
 		ArrayList<Y_M_boardVO> m_boardVO = detailBoardService.getY_M_board(bno);
-		System.out.println("m_boardVO  " + m_boardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
 		ArrayList<D_T_boardVO> d_T_boardVO = detailBoardService.getD_T_board(bno);
-		System.out.println("d_T_boardVO  " + d_T_boardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
 		ArrayList<IMGBoardVO> IMGBoardVO = detailBoardService.getIMGBoard(bno);
-		System.out.println("IMGBoardVO  " + IMGBoardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
 		UserIMGBoardVO userIMGBoardVO = detailBoardService.getUserIMGBoard(bno);
-		System.out.println("userIMGBoardVO   " + userIMGBoardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
-		
 		TextBoardVO textBoardVO  = detailBoardService.getTextBoard(bno);
-		System.out.println("textBoardVO " + textBoardVO );
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
-		
 		
 		ArrayList<Y_M_boardVO> m_boardVOFirst = detailBoardService.getY_M_boardFisrt(bno);
-		System.out.println("m_boardVOFirst " + m_boardVOFirst);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
-		
+		System.out.println("12312312S");
 		File folder = new File(APP_CONSTANT.UPLOAD_PATH +"\\detailPageImg");
 		String uploadPath = folder.getPath();
-		
-		
-		
-
-		
-		
 		model.addAttribute("m_boardVOFirst", m_boardVOFirst);
 		model.addAttribute("detaiBoardVO", detaiBoardVO);
 		model.addAttribute("d_T_boardVO", d_T_boardVO);
@@ -247,7 +208,7 @@ public class DetailBoardController {
 			@RequestParam("text2") String text2,
 			@RequestParam("text3") String text3,
 			
-			 Model model) {
+			RedirectAttributes RA) {
 		System.out.println("===================");
 		System.out.println("bigCategory" + bigCategory);
 		System.out.println("middleCategory" + middleCategory);
@@ -384,10 +345,10 @@ public class DetailBoardController {
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");		
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		model.addAttribute("bno", bno);
+		RA.addAttribute("bno", bno);
 		System.out.println("값넘기기" + bno);
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		return "detailBoard/detailPage";
+		return "redirect:/detailBoard/detailPage";
 		
 	}
 	
