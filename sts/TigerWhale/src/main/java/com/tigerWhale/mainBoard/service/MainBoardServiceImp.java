@@ -35,6 +35,9 @@ public class MainBoardServiceImp implements MainBoardService {
 
 	@Override
 	public ArrayList<MainBoardVO> getNearBoard(UsersVO vo) {
+		System.out.println("!@#!@#sdasad!@#!@#!");
+		System.out.println(mainBoardMapper.getNearBoard(vo));
+		System.out.println("!@#!@#sdasad!@#!@#!");
 		
 		return mainBoardMapper.getNearBoard(vo);
 	}
@@ -42,6 +45,13 @@ public class MainBoardServiceImp implements MainBoardService {
 	@Override
 	public ArrayList<CategoryBoardVO> nearCategory(CategoryBoardVO vo) {
 		// TODO Auto-generated method stub
+		System.out.println("@@@@@@@");
+		System.out.println(vo.getBigCategory());
+		System.out.println(vo.getMiddleCategory());
+		System.out.println(vo.getSmallCategory());
+		System.out.println("@@@@@@@");
+		System.out.println(mainBoardMapper.nearCategory(vo));
+		System.out.println("@@@@@@@");
 		return mainBoardMapper.nearCategory(vo);
 	}
 

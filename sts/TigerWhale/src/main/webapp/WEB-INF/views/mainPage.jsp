@@ -223,6 +223,9 @@
 		var middleCategory = document.querySelector(".nearMiddleCategory");
 		var smallCategory = document.querySelector(".nearSmallCategory");
 		var categoryCode = null;
+		console.log("카테");
+		console.log(categoryCode);
+		console.log("카테");
 		
 		var categoryBtn = document.querySelector(".categoryBtn");
 		var categoryBtnText = document.querySelector(".categoryBtnText");
@@ -235,6 +238,7 @@
 			{
 				if(bigCategory.value == '대분류 선택' && !(middleCategory.classList.contains("hidden")))
 				{
+					console.log("ccc번째");
 					middleCategory.classList.toggle('hidden');
 					middleCategory.value = "";
 					if(!(smallCategory.classList.contains("hidden")))
@@ -245,6 +249,7 @@
 				}
 				else if(bigCategory.value != '' && middleCategory.classList.contains("hidden"))
 				{
+					console.log("a번쨰");
 					middleCategory.classList.toggle('hidden');
 				}
 				else
@@ -252,6 +257,7 @@
 					middleCategory.value = "";
 					if(!(smallCategory.classList.contains("hidden")))
 					{
+						console.log("bb번째");
 						smallCategory.classList.toggle('hidden');
 						smallCategory.value = "";
 					}
@@ -269,16 +275,19 @@
 				console.log(middleCategory.value == '중분류 선택' && !(smallCategory.classList.contains("hidden")))
 				if(middleCategory.value == '중분류 선택' && !(smallCategory.classList.contains("hidden")))
 				{
+					console.log("@@@@@!!@");
 					smallCategory.classList.toggle('hidden');
 					smallCategory.value = "";
 				}
 				else if(middleCategory.value != '' && smallCategory.classList.contains("hidden"))
 				{
+					console.log("2번쨰");
 					smallCategory.classList.toggle('hidden');
 					smallCategory.value = "";
 				}
 				else
 				{
+					console.log("3번쨰");
 					smallCategory.value = "";
 				}
 				
@@ -287,6 +296,7 @@
 			
 			smallCategory.onchange = function()
 			{
+				console.log("쏴리질러어어어어어엉어엉");
 				nearCategory();
 			}
 			
@@ -458,6 +468,9 @@
 					success : function(data)
 					{
 						
+						console.log("쏴리질러");
+						console.log(data);
+						console.log("쏴리질러");
 						
 						var nearIndex = sessionStorage.getItem("nearIndex");
 						sessionStorage.setItem("nearData" , data.length);	
@@ -664,6 +677,9 @@
 	        		contentType: "application/json; charset=UTF-8",
 	        		success: function(data){
 	        			
+	        			console.log("!!!!!!!!!!!!!!");
+	        			console.log(data);
+	        			console.log("!!!!!!!!!!!!!!");
 	        			
 	        			var bestIndex = sessionStorage.getItem("bestIndex");
 						sessionStorage.setItem("bestData" , data.length);	
@@ -685,8 +701,8 @@
 								bestAdd += '</div>'
 								bestAdd += '</a>'
 								bestAdd += '<div class="content-detail">'
-								bestAdd += '<a href="#" class="content-title"> <strong class="title-font">'+data[i].title+'</strong>'
-								bestAdd += '</a> <a href="#" class="content-text">'+data[i].text+'</a>'
+								bestAdd += '<a href="detailBoard/detailPage?bno='+data[i].bno+'" class="content-title"> <strong class="title-font">'+data[i].title+'</strong></a> '
+								bestAdd += '<span class="content-text">'+data[i].text+'</span>'
 								bestAdd += '</div>'
 								bestAdd += '<div class="content-comment">'
 								bestAdd += '<span class="select-count"> 조회수 <em>10,000,000</em>'
@@ -697,11 +713,11 @@
 							    bestAdd += '<div class="thumbnail-recent">'
 								bestAdd += '<div class="thumbnail-recent">'
 								bestAdd += '<div class="thumbnail-area">'
-								bestAdd += '<a href="#" class="thumbnail-inner"> <img class="img-post" alt="postthumbnail" src="${pageContext.request.contextPath }/resources/img/detailPageImg/'+data[i].bno+'/'+data[i].imgBoardList[0].img+'" style= width="167; height=167;" >'
+								bestAdd += '<a href="detailBoard/detailPage?bno='+data[i].bno+'" class="thumbnail-inner"> <img class="img-post" alt="postthumbnail" src="${pageContext.request.contextPath }/resources/img/detailPageImg/'+data[i].bno+'/'+data[i].imgBoardList[0].img+'" style= width="167; height=167;" >'
 								bestAdd += '</a> <a href="detailBoard/detailPage?bno='+data[i].bno+'" class="button-more-img"> <i class="sp_common icon_more"><span class="blind">글 썸네일 펼치기</span></i>'
 								bestAdd += '</a>'
 								bestAdd += '<div class="plus-thumbnail-list">'
-								bestAdd += '<a href="#" class="list-inner">'
+								bestAdd += '<a href="detailBoard/detailPage?bno='+data[i].bno+'" class="list-inner">'
 								
 								if(data[i].imgBoardList.length > 1)
 								{
@@ -729,7 +745,7 @@
 				            {
 				            	bestAdd += '<div class="board-recent">'
 								    bestAdd += '<div class="content-recent">'
-									bestAdd += '<a href="#" class="profile-board">'
+									bestAdd += '<a href="detailBoard/detailPage?bno='+data[i].bno+'" class="profile-board">'
 									bestAdd += '<div class="profile-img">'
 									bestAdd += '<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/icon_profile.png">'
 									bestAdd += '</div>'
@@ -738,8 +754,8 @@
 									bestAdd += '</div>'
 									bestAdd += '</a>'
 									bestAdd += '<div class="content-detail">'
-									bestAdd += '<a href="#" class="content-title"> <strong class="title-font">'+data[i].title+'</strong>'
-									bestAdd += '</a> <a href="#" class="content-text">'+data[i].text+'</a>'
+									bestAdd += '<a href="detailBoard/detailPage?bno='+data[i].bno+'" class="content-title"> <strong class="title-font">'+data[i].title+'</strong>'
+									bestAdd += '</a> <a href="detailBoard/detailPage?bno='+data[i].bno+'" class="content-text">'+data[i].text+'</a>'
 									bestAdd += '</div>'
 									bestAdd += '<div class="content-comment">'
 									bestAdd += '<span class="select-count"> 조회수 <em>10,000,000</em>'
@@ -750,11 +766,11 @@
 								    bestAdd += '<div class="thumbnail-recent">'
 									bestAdd += '<div class="thumbnail-recent">'
 									bestAdd += '<div class="thumbnail-area">'
-									bestAdd += '<a href="#" class="thumbnail-inner"> <img class="img-post" alt="postthumbnail" src="${pageContext.request.contextPath }/resources/img/detailPageImg/'+data[i].bno+'/'+data[i].imgBoardList[0].img+'" width="167" height="167">'
+									bestAdd += '<a href="detailBoard/detailPage?bno='+data[i].bno+'" class="thumbnail-inner"> <img class="img-post" alt="postthumbnail" src="${pageContext.request.contextPath }/resources/img/detailPageImg/'+data[i].bno+'/'+data[i].imgBoardList[0].img+'" width="167" height="167">'
 									bestAdd += '</a> <a href="detailBoard/detailPage?bno='+data[i].bno+'" class="button-more-img"> <i class="sp_common icon_more"><span class="blind">글 썸네일 펼치기</span></i>'
 									bestAdd += '</a>'
 									bestAdd += '<div class="plus-thumbnail-list">'
-									bestAdd += '<a href="#" class="list-inner">'
+									bestAdd += '<a href="detailBoard/detailPage?bno='+data[i].bno+'" class="list-inner">'
 									
 									if(data[i].imgBoardList.length > 1)
 									{
@@ -789,7 +805,6 @@
     		categoryBtn.onclick = function(){
     			if(bigCategory.value=="대분류 선택" || middleCategory.value =="중분류 선택" || smallCategory.value =="소분류 선택")
     			{
-    				console.log("세가지다 선택해");
     				categoryBtnText.innerHTML = "카테고리를 전부 선택해야 합니다";
     			}else
     			{

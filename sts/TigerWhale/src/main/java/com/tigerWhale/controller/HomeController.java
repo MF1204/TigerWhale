@@ -74,6 +74,9 @@ public class HomeController {
 	@PostMapping(value = "/getNearBoard", produces = "application/json", consumes = "application/json")
 	public ArrayList<MainBoardVO> getNearBoard(@RequestBody UsersVO vo)
 	{
+		System.out.println("!@#!@#!@#!@#!");
+		System.out.println(vo.getC_code());
+		System.out.println("!@#!@#!@#!@#!");
 		ArrayList<MainBoardVO> vo2 = mainBoardService.getNearBoard(vo);
 		return vo2;
 	}
@@ -82,14 +85,8 @@ public class HomeController {
 	@PostMapping(value = "/nearCategory", produces ="application/json")
 	public ArrayList<CategoryBoardVO> nearCategory(@RequestBody  CategoryBoardVO vo)
 	{
-		System.out.println("니카");
 		
 
-		System.out.println(vo.getBigCategory());
-		System.out.println(vo.getMiddleCategory());
-		System.out.println(vo.getSmallCategory());
-		System.out.println(vo.getMiddleCategory() == "");
-		System.out.println(vo.getSmallCategory() == "");
 		if( (vo.getBigCategory() != "" && vo.getSmallCategory() != "" ) && vo.getMiddleCategory() != "")
 		{
 			return mainBoardService.getCategoryCode(vo);
@@ -97,18 +94,21 @@ public class HomeController {
 		
 		if( (vo.getBigCategory() != "" && vo.getSmallCategory() == "" ) && vo.getMiddleCategory() == "")
 		{
+			System.out.println("1");
 			vo.setMiddleCategory(vo.getBigCategory());
 			vo.setBigCategory(null);
 			vo.setSmallCategory(null);
 		}
 		else if (vo.getBigCategory() != "" && vo.getMiddleCategory() != "")
 		{
+			System.out.println("2");
 			vo.setBigCategory(null);
 			vo.setSmallCategory(vo.getMiddleCategory());
 			vo.setMiddleCategory(null);
 		}
 		else if(vo.getMiddleCategory() =="" && vo.getSmallCategory() =="")
 		{
+			System.out.println("3");
 			vo.setMiddleCategory(null);
 			vo.setSmallCategory(null);
 		}
