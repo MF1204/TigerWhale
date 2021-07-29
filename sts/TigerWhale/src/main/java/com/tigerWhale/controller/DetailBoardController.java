@@ -144,15 +144,9 @@ public class DetailBoardController {
 		TextBoardVO textBoardVO  = detailBoardService.getTextBoard(bno);
 		
 		ArrayList<Y_M_boardVO> m_boardVOFirst = detailBoardService.getY_M_boardFisrt(bno);
-		
+		System.out.println("12312312S");
 		File folder = new File(APP_CONSTANT.UPLOAD_PATH +"\\detailPageImg");
 		String uploadPath = folder.getPath();
-		
-		
-		
-
-		
-		
 		model.addAttribute("m_boardVOFirst", m_boardVOFirst);
 		model.addAttribute("detaiBoardVO", detaiBoardVO);
 		model.addAttribute("d_T_boardVO", d_T_boardVO);
