@@ -60,13 +60,12 @@ public class DetailBoardController {
 
 
 		HttpSession session = request.getSession();
-		System.out.println(session.getAttribute("usersVO"));
 		
 		if(session.getAttribute("usersVO") != null)
 		{
 			model.addAttribute("usersVO", session.getAttribute("usersVO"));
 		}
-			
+		
 		model.addAttribute("categoryBoardVO", categoryBoardVO);
 		return "detailBoard/detailWrite";
 		
@@ -78,7 +77,6 @@ public class DetailBoardController {
 	public ArrayList<CategoryBoardVO> detailWriteUpdate(@RequestBody CategoryBoardVO vo) {
 		
 		ArrayList<CategoryBoardVO> updateCategoryBoardVO  = detailBoardService.getMiddleCataGory(vo);
-		System.out.println("바뀐값  " + updateCategoryBoardVO);
 		return detailBoardService.getMiddleCataGory(vo);
 	}
 	
@@ -97,7 +95,6 @@ public class DetailBoardController {
 		ArrayList<CategoryBoardVO> categoryBoardVO = detailBoardService.getCataGoryALL();
 
 		HttpSession session = request.getSession();
-		System.out.println(session.getAttribute("usersVO"));
 		
 		if(session.getAttribute("usersVO") != null)
 		{
@@ -128,54 +125,25 @@ public class DetailBoardController {
 		model.addAttribute("userVO", userVO);
 		//===============================================
 		ArrayList<DetailBoardVO> detaiBoardVO = detailBoardService.getBoardDetail(bno);
-		System.out.println("detiBoardVO  " + detaiBoardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
 		MainBoardVO mainBoardVO = detailBoardService.getMainDetail(bno);
-		System.out.println("mainBoardVO  " + mainBoardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
-		
 		System.out.println(mainBoardVO.getC_code());
 		CategoryBoardVO categoryBoardVO = detailBoardService.getCategory(mainBoardVO.getC_code());
-		System.out.println("categoryBoardVO  " + categoryBoardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
 		ArrayList<ReplyBoardVO> repyBoardVO = detailBoardService.getReplyBoard(bno);
-		System.out.println("repyBoardVO  " + repyBoardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
-		
 		String user_ID = mainBoardVO.getUser_ID();
-		System.out.println( "mainBoardVO" + mainBoardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
 		UsersVO usersVO = detailBoardService.getUserDetail(user_ID);
-		System.out.println("usersVO  " + usersVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
-		
 		ArrayList<Y_M_boardVO> m_boardVO = detailBoardService.getY_M_board(bno);
-		System.out.println("m_boardVO  " + m_boardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
 		ArrayList<D_T_boardVO> d_T_boardVO = detailBoardService.getD_T_board(bno);
-		System.out.println("d_T_boardVO  " + d_T_boardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
 		ArrayList<IMGBoardVO> IMGBoardVO = detailBoardService.getIMGBoard(bno);
-		System.out.println("IMGBoardVO  " + IMGBoardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
 		UserIMGBoardVO userIMGBoardVO = detailBoardService.getUserIMGBoard(bno);
-		System.out.println("userIMGBoardVO   " + userIMGBoardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
-		
 		TextBoardVO textBoardVO  = detailBoardService.getTextBoard(bno);
-		System.out.println("textBoardVO " + textBoardVO );
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
-		
 		
 		ArrayList<Y_M_boardVO> m_boardVOFirst = detailBoardService.getY_M_boardFisrt(bno);
-		System.out.println("m_boardVOFirst " + m_boardVOFirst);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
 		File folder = new File(APP_CONSTANT.UPLOAD_PATH +"\\detailPageImg");
 		String uploadPath = folder.getPath();
