@@ -120,7 +120,7 @@ public class DetailBoardController {
 		int delte = detailBoardService.mainBoarddelete(bno);
 
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		return "home";
+		return "mainPage";
 		
 		
 	}
@@ -130,7 +130,7 @@ public class DetailBoardController {
 	@RequestMapping("/detailPage")
 	public String detailPage(@RequestParam(value="bno") int bno ,HttpServletRequest request, Model model) {
 //int bno = 126;
-		
+
 		System.out.println(bno);
 		//===============================================
 		
